@@ -13,8 +13,8 @@ Select and record the methodology version before reading the publication critica
 
 For version 0.1:
 
-- read [references/standard.md](references/standard.md) completely;
-- use [references/wzor-raportu.md](references/wzor-raportu.md) and [references/karta-oceny.md](references/karta-oceny.md).
+- read [references/standard-0.1.md](references/standard-0.1.md) completely;
+- use [references/wzor-raportu-0.1.md](references/wzor-raportu-0.1.md) and [references/karta-oceny-0.1.md](references/karta-oceny-0.1.md).
 
 For version 0.2 draft:
 
