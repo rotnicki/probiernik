@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import unittest
@@ -112,6 +113,67 @@ class PackageTests(unittest.TestCase):
         links = re.findall(r"\[[^\]]+\]\(([^)]+)\)", content)
         missing = [link for link in links if "://" not in link and not (skill_dir / link).is_file()]
         self.assertEqual([], missing)
+
+    def test_historical_0_1_files_have_explicit_version_names(self) -> None:
+        ambiguous = (
+            "metodologia/standard.md",
+            "szablony/karta-oceny.md",
+            "szablony/wzor-raportu.md",
+            "skill/references/standard.md",
+            "skill/references/karta-oceny.md",
+            "skill/references/wzor-raportu.md",
+        )
+        for relative in ambiguous:
+            self.assertFalse((ROOT / relative).exists(), f"Niejednoznaczny plik: {relative}")
+
+        pairs = {
+            ROOT / "metodologia/0.1/standard.md": ROOT / "skill/references/standard-0.1.md",
+            ROOT / "szablony/0.1/karta-oceny.md": ROOT / "skill/references/karta-oceny-0.1.md",
+            ROOT / "szablony/0.1/wzor-raportu.md": ROOT / "skill/references/wzor-raportu-0.1.md",
+        }
+        for source, copy in pairs.items():
+            self.assertTrue(copy.is_file())
+            self.assertEqual(source.read_bytes(), copy.read_bytes(), f"Niezgodna kopia 0.1: {copy}")
+
+    def test_version_directory_guides_are_complete(self) -> None:
+        methodology = (ROOT / "metodologia/README.md").read_text(encoding="utf-8")
+        templates = (ROOT / "szablony/README.md").read_text(encoding="utf-8")
+        for version in ("0.1", "0.2", "0.3"):
+            self.assertIn(version, methodology)
+            self.assertIn(version, templates)
+        self.assertIn("nie łączyć", methodology)
+        self.assertIn("v0.3.0", methodology)
+        self.assertIn("aktualnym domyślnym wyborem", templates)
+        self.assertIn("wzór porównania dwóch niezależnych ocen", templates)
+
+        for readme_path in (ROOT / "metodologia/README.md", ROOT / "szablony/README.md"):
+            content = readme_path.read_text(encoding="utf-8")
+            links = re.findall(r"\[[^\]]+\]\(([^)]+)\)", content)
+            missing = [
+                link
+                for link in links
+                if "://" not in link and not (readme_path.parent / link).exists()
+            ]
+            self.assertEqual([], missing)
+
+    def test_frozen_methodology_and_template_trees_are_unchanged(self) -> None:
+        expected = {
+            "metodologia/0.1": "3d620bd775f83e1124546a80e5c51a17614ab84cc98e1efc072ba83da9e9708e",
+            "metodologia/0.2": "895165aa069f9274d68dc84f6dd5211d9a0e2a40e7818f7ec8bbd6dbb5061eef",
+            "metodologia/0.3": "a0aa00ba70532c9d42cee0c9251557dc9fcf7214eace419cfc4ec7c6443d1e9b",
+            "szablony/0.1": "f318a656a0ff5c78aa74b85412e7872002885ff96bd050452ba8125d09ef9614",
+            "szablony/0.2": "5ebd0ea47670513019f1dcd7d55a82cb768f0344aad77d7482c29a29860fd97a",
+            "szablony/0.3": "8df441b58ced6afce5aa85529475d7c61824460cc5c424a2bfc5f711dcd66858",
+        }
+        for relative, digest in expected.items():
+            directory = ROOT / relative
+            checksum = hashlib.sha256()
+            for path in sorted(path for path in directory.rglob("*") if path.is_file()):
+                checksum.update(path.relative_to(directory).as_posix().encode())
+                checksum.update(b"\0")
+                checksum.update(path.read_bytes())
+                checksum.update(b"\0")
+            self.assertEqual(digest, checksum.hexdigest(), f"Zmienione zamrożone pliki: {relative}")
 
     def test_local_schema_refs_resolve(self) -> None:
         for name in ("wynik.schema.json", "wyciag-kalibracyjny.schema.json", "porownanie-pary-0.3.schema.json", "metryka-0.3.schema.json"):
