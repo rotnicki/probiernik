@@ -1,16 +1,45 @@
 # U1 — badanie uzupełniające oficjalną metodologię 0.3
 
-**Wersja protokołu:** U1-1.3 — 2026-10-19; zatwierdzony korpus, dalsze warunki startu
+**Wersja protokołu:** U1-1.4 — 2026-10-19; jawna zmiana warunków wykonania, start zlecony
 
 **Podstawa dokumentacji:** master `38babd2231c6ea2af786913c7c6040423b27a88d`
 
 **Metodologia:** oficjalne, zamrożone wydanie `v0.3.0`
 
 **Commit znacznika:** `853404df15f05ba769d2440644a14fd0c77ec2e3`
-**Status:** przygotowanie po zatwierdzeniu korpusu; nie rozpoczęto ocen. Właściciel
-zatwierdził sześć publikacji 2026-10-19 o 16:36:25 +02:00. Wejście nie jest dopuszczone do
-ocen: pozostają udokumentowane braki biblioteki i niepotwierdzone warunki
-wykonawcze. Zatwierdzenie korpusu i start są osobnymi decyzjami właściciela.
+**Status:** właściciel zlecił 12 ocen 2026-10-19 o 18:05:22 +02:00.
+Przed pierwszą oceną zapisano poniższą zmianę warunków. Nie zmienia ona
+metodologii, korpusu, profili ani kolejności. Poprzedni protokół U1-1.3 jest
+zachowany w historii Git, commit `f225f31d47f0261674e0cef377b9c51f497128d7`.
+
+Korpus zatwierdzono wcześniej 2026-10-19 o 16:36:25 +02:00.
+
+**Obowiązujące odstępstwa od warunków U1-1.3:**
+
+- 12 osobnych agentów Work, każdy z `fork_turns="none"`, bez historii
+  koordynatora i bez wyników innych ocen; jednakowa dziedziczona konfiguracja,
+  bez nadpisania modelu lub ustawienia rozumowania.
+- Rozdzielenie kontekstów i nieudostępnianie wyników zastępuje wymaganie
+  technicznej blokady wspólnych plików. Nie jest równoważne izolacji systemowej.
+  Narzędzia i wspólny system plików pozostają technicznie dostępne;
+  ograniczenie korzystania z nich jest instrukcją organizacyjną.
+- Dokładny snapshot i inne nieudostępnione parametry zapisuje się jako
+  `not_available`. Identyczność dokładnego snapshotu wszystkich ocen
+  pozostaje niepotwierdzona i nie blokuje zatwierdzonego uruchomienia.
+- Brak źródła pomocniczego może pozostać udokumentowanym ograniczeniem,
+  jeśli pełny proces skilla nadal jest możliwy. Brak treści głównej lub
+  niezbędnego materiału nie może być zastąpiony domysłem. Niepotwierdzona
+  podstawa wykorzystania nie jest ani zakazem, ani udzieloną zgodą.
+- Całe wejście, manifesty i sumy zamraża się przed pierwszą oceną;
+  nie uzupełnia się biblioteki między ocenami. Oceniający nie korzystają z sieci.
+- Każdy agent zachowuje pełny wynik w swojej pamięci narzędziowej i zamyka go
+  sumami kontrolnymi. Dopiero po zamknięciu wszystkich 12 ocen przekazuje
+  ten sam kompletny wynik koordynatorowi do prywatnych plików. Do tego czasu
+  żadnych wyników nie zapisuje się we wspólnych plikach.
+
+Poniższe historyczne opisy bramek U1-1.3 obowiązują tylko w zakresie
+niezmienionym przez powyższą decyzję. Zapisane wcześniejsze odmowy i braki
+pozostają faktami historycznymi, a nie nową odmową startu po zmianie warunków.
 
 ## 1. Cel i ograniczenia
 

@@ -31,12 +31,10 @@ class U1ProtocolTests(unittest.TestCase):
         self.assertIn("nie zmienia metodologii ani skilla", self.readme)
 
     def test_design_and_launch_are_separate(self):
-        for text in ("łącznie 12 ocen", "ChatGPT", "bez ludzi jako oceniających",
-                     "ocenia tylko jedną publikację", "osobna zgoda na uruchomienie"):
+        for text in ("łącznie 12 ocen", "ChatGPT", "bez ludzi jako oceniających", "ocenia tylko jedną publikację"):
             self.assertIn(text, self.protocol)
-        for text in (self.protocol, self.readme):
-            self.assertIn("nie rozpoczęto ocen", text)
-            self.assertIn("przygotowanie", text)
+        self.assertIn("18:05:22 +02:00", self.protocol)
+        self.assertIn("18:05:22 +02:00", self.readme)
         self.assertIn("nie rozpoczyna B2", self.readme)
         self.assertIn("Nie scala się PR", self.protocol)
 
@@ -82,13 +80,11 @@ class U1ProtocolTests(unittest.TestCase):
                      "Niedostępny", "nie zawiera żadnego zapisu"):
             self.assertIn(text, self.protocol)
 
-    def test_review_package_does_not_authorise_execution(self):
-        for text in ("Korpus wybrano deterministycznie", "Korpus zatwierdzony",
-                     "Start wymaga osobnego polecenia", "nie jest jeszcze dopuszczone do ocen",
-                     "Nie potwierdzono kompletności", "0 z 12"):
+    def test_execution_amendment_is_explicit(self):
+        for text in ("U1-1.4", 'fork_turns="none"', "not_available", "Nie jest równoważne izolacji systemowej", "przed pierwszą oceną", "wszystkich 12 ocen", "nie zapisuje się we wspólnych plikach"):
+            self.assertIn(text, self.protocol)
+        for text in ("0 z 12", "0 z 6", "Korpus zatwierdzony", "bez zmian", "nie jest techniczną blokadą"):
             self.assertIn(text, self.readme)
-        self.assertNotIn("Wybór jest zablokowany", self.readme)
-        self.assertIn("Kopia do przeglądu nie jest zamrożeniem wejścia", self.protocol)
 
     def test_final_qualification_does_not_add_candidates(self):
         for text in ("zachowaną pulę 164 adresów", "bez nowych wyszukiwań ani kandydatów",
@@ -119,11 +115,12 @@ class U1ProtocolTests(unittest.TestCase):
                      "warunki potwierdzone, niepotwierdzone"):
             self.assertIn(text, self.protocol)
 
-    def test_corpus_approval_does_not_authorise_launch(self):
+    def test_corpus_and_execution_decisions_preserved(self):
+        self.assertIn("16:36:25 +02:00", self.protocol)
+        self.assertIn("Zatwierdzenie korpusu nie jest zgodą na rozpoczęcie ocen", self.protocol)
+        self.assertIn("18:05:22 +02:00", self.protocol)
         for text in (self.protocol, self.readme):
-            self.assertIn("16:36:25 +02:00", text)
-            self.assertIn("Zatwierdzenie korpusu nie jest zgodą na rozpoczęcie ocen", text)
-            self.assertNotIn("korpus oczekuje na zatwierdzenie", text)
+            self.assertIn("f225f31d47f0261674e0cef377b9c51f497128d7", text)
         self.assertIn("Wybór, profile i kolejność pozostają bez zmian", self.protocol)
 
     def test_scoped_resolution_and_prototype_are_not_full_readiness(self):
@@ -138,12 +135,12 @@ class U1ProtocolTests(unittest.TestCase):
                      "wyłącznie własnego przypadku", "identyczną część wspólną"):
             self.assertIn(text, self.protocol)
 
-    def test_isolation_is_enforced_not_merely_declared(self):
-        for text in ("read-only", "własny zapisywalny katalog", "Brak sieci",
-                     "egzekwowanych uprawnień/sandboxa", "syntetycznych plikach",
-                     "Nowa rozmowa ani współdzielony system plików",
-                     "Nieznany snapshot", "blokują start"):
-            self.assertIn(text, self.protocol)
+    def test_isolation_limitations_are_not_hidden(self):
+        amendment=self.protocol.split("## 1.")[0]
+        for text in ("Rozdzielenie kontekstów", "nieudostępnianie wyników", "Nie jest równoważne izolacji systemowej", "technicznie dostępne", "not_available", "bez nadpisania modelu"):
+            self.assertIn(text, amendment)
+        self.assertIn("egzekwowanych uprawnień/sandboxa", self.protocol)
+        self.assertIn("historyczne opisy bramek", amendment)
 
     def test_inputs_are_frozen_without_fabricated_outputs(self):
         for text in ("Nie wpisuje się fikcyjnych dat", "metryka.json",
