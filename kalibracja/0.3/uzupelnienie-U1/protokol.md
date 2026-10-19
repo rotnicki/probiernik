@@ -1,6 +1,44 @@
 # U1 — badanie uzupełniające oficjalną metodologię 0.3
 
-**Wersja protokołu:** U1-1.5 — 2026-10-19; techniczna zmiana odbioru wyników
+**Wersja protokołu:** U1-1.6 — 2026-10-19; zamknięcie badania z odstępstwami
+
+**Zamknięcie wykonania U1-1.6:** odebrano 12 z 12 kompletnych ocen R1
+i przygotowano 6 z 6 porównań A/B. Oficjalny niezmieniony walidator przeszedł
+36/36 kontroli ocen i 6/6 porównań. Zweryfikowano 72 sumy artefaktów ocen,
+kanoniczne bajty wejść, dopasowanie wszystkich identyfikatorów oraz macierz
+dziewięciu pytań badawczych. Zapis wyników nastąpił po zamknięciu całej serii.
+Koordynator nie oceniał publikacji ani nie poprawiał ocen dla zgodności.
+
+Pierwsze 12 pełnych pakietów utracono przy odbiorze. Wykonanie po jednym
+dozwolonym ponowieniu oznacza 24 uruchomione instancje oceniające, lecz nadal
+12 użytecznych ocen sześciu publikacji. Utraconych wyników nie odtworzono;
+ich potwierdzenia i dokumentację awarii zachowano. Warunki przed ponowieniami
+zapisano w commicie `945be63f080c85f2004bd85b9cf3e1bcf47966c1`.
+
+Werdykty i bezpieczne polecenia są zgodne po 6/6 par; dokładne A–L: 62/72,
+w tym 2 nd/nd. Pozostało 9 różnic jednopunktowych i 1 nd/liczba.
+Zgodność dokładna lub w granicy jednego punktu: 71/72; dla samych liczb
+69/69. Średnia różnica bezwzględna: 9/69 = 0,1304, tylko dla par liczbowych.
+To miary powtarzalności, nie niezależne potwierdzenie trafności.
+
+Jawne ograniczenia obejmują organizacyjne rozdzielenie kontekstów,
+niepotwierdzony snapshot, dziewięć luk pomocniczych, dwóch wydawców,
+dwie częściowe kopie mediów poza manifestem, przerwy usługi, krótki zapis
+trzech liczników przed pierwszą barierą, formalne korekty metryk i ograniczenia
+analizy modalności. Jeden wstępny checkpoint nie zawierał osobnego profilu
+odbiorcy, więc kolejność jego ustalenia nie ma pełnego potwierdzenia.
+Zmiana katalogu skilli przez usługę ogranicza potwierdzenie identyczności
+środowiska; koordynator nie przełączał modelu ani oficjalnego skilla.
+
+Wykryto niewykonywaną kontrolę minimum L w oficjalnym walidatorze;
+osobny audyt rzeczywistych wyników stwierdził 0/12 naruszeń. Walidatora
+nie zmieniono w U1. Nie zaobserwowano werdyktu rzetelny, dodatniej krytyczności
+ani braku rdzenia; te granice pozostają lukami pokrycia. Rejestr odstępstw,
+pełne porównania, wyniki i macierz pokrycia pozostają prywatne.
+
+U1-1.6 dokumentuje wykonanie, nie zmienia metodologii ani reguł oceniania.
+Poniższe decyzje U1-1.4 i U1-1.5 oraz wcześniejsze zapisy pozostają historią
+warunków. Zakończenie nie oznacza wykonania bez odchyleń ani uruchomienia B2.
 
 **Podstawa dokumentacji:** master `38babd2231c6ea2af786913c7c6040423b27a88d`
 

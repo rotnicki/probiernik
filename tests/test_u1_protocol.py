@@ -1,4 +1,4 @@
-"""Check U1 preparation safeguards; do not execute or assess publications."""
+"""Check U1 documentation, closure accounting and preserved boundaries."""
 
 from pathlib import Path
 import re
@@ -83,7 +83,7 @@ class U1ProtocolTests(unittest.TestCase):
     def test_execution_amendment_is_explicit(self):
         for text in ("U1-1.4", 'fork_turns="none"', "not_available", "Nie jest równoważne izolacji systemowej", "przed pierwszą oceną", "wszystkich 12 ocen", "nie zapisuje się we wspólnych plikach"):
             self.assertIn(text, self.protocol)
-        for text in ("0 z 12", "0 z 6", "Korpus zatwierdzony", "bez zmian", "nie jest techniczną blokadą"):
+        for text in ("12 z 12", "6 z 6", "Korpus zatwierdzony", "bez zmian", "nie jest techniczną blokadą"):
             self.assertIn(text, self.readme)
 
     def test_final_qualification_does_not_add_candidates(self):
@@ -96,7 +96,26 @@ class U1ProtocolTests(unittest.TestCase):
                      "próby R1", "nie utrwala wyników w zwykłych plikach", "Nie rekonstruuje się ocen",
                      "niezmanifestowane częściowe kopie mediów"):
             self.assertIn(text, self.protocol)
-        self.assertIn("seria pozostaje niekompletna", self.readme)
+        for text in ("pełne pakiety utracono", "24 instancje oceniające",
+                     "12 użytecznych", "nie rekonstruowano", "R1"):
+            self.assertIn(text, self.readme)
+
+    def test_closure_accounts_for_nd_and_numeric_denominators(self):
+        for content in (self.protocol, self.readme):
+            for text in ("U1-1.6", "36/36", "6/6", "62/72",
+                         "9 różnic jednopunktowych i 1 nd/liczba", "9/69 = 0,1304"):
+                self.assertIn(text, content)
+        self.assertIn("w tym 2 nd/nd", self.protocol)
+        self.assertIn("w tym 2 pozycje nd/nd", self.readme)
+        self.assertIn("wyłącznie 69 par liczbowych", self.readme)
+
+    def test_closure_exposes_validation_and_coverage_limits(self):
+        for content in (self.protocol, self.readme):
+            for text in ("0/12 naruszeń", "profilu", "snapshot", "prywatne"):
+                self.assertIn(text, content)
+        for text in ("braku rdzenia", "krytyczności", "rzetelny",
+                     "zgodność nie potwierdza trafności", "nie uruchomiono kolejnej serii"):
+            self.assertIn(text, self.readme)
 
     def test_statutory_rights_are_checked_and_not_guessed(self):
         for text in ("Brak jawnej licencji nie oznacza zakazu wykorzystania",
