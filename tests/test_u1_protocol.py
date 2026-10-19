@@ -83,8 +83,8 @@ class U1ProtocolTests(unittest.TestCase):
             self.assertIn(text, self.protocol)
 
     def test_review_package_does_not_authorise_execution(self):
-        for text in ("Korpus wybrano deterministycznie", "do osobnego",
-                     "zatwierdzenia", "nie jest jeszcze dopuszczone do ocen",
+        for text in ("Korpus wybrano deterministycznie", "Korpus zatwierdzony",
+                     "Start wymaga osobnego polecenia", "nie jest jeszcze dopuszczone do ocen",
                      "Nie potwierdzono kompletności", "0 z 12"):
             self.assertIn(text, self.readme)
         self.assertNotIn("Wybór jest zablokowany", self.readme)
@@ -103,7 +103,7 @@ class U1ProtocolTests(unittest.TestCase):
             self.assertIn(text, self.protocol)
 
     def test_approved_cap_and_closed_pool_preserve_other_criteria(self):
-        for text in ("U1-1.2", "przed wyborem", "z dwóch do trzech",
+        for text in ("U1-1.3", "przed wyborem", "z dwóch do trzech",
                      "Pozostałe kryteria pozostają bez zmian", "25 potwierdzonych",
                      "102 wpisów", "Pozostałe 37", "nie uznano ich za zakazane",
                      "10 206", "798", "różnorodność redakcyjną"):
@@ -117,6 +117,20 @@ class U1ProtocolTests(unittest.TestCase):
         for text in ("nie potwierdziła dokładnego snapshotu", "odmową systemową",
                      "testy dostępu przyszłej instancji nie zostały wykonane",
                      "warunki potwierdzone, niepotwierdzone"):
+            self.assertIn(text, self.protocol)
+
+    def test_corpus_approval_does_not_authorise_launch(self):
+        for text in (self.protocol, self.readme):
+            self.assertIn("16:36:25 +02:00", text)
+            self.assertIn("Zatwierdzenie korpusu nie jest zgodą na rozpoczęcie ocen", text)
+            self.assertNotIn("korpus oczekuje na zatwierdzenie", text)
+        self.assertIn("Wybór, profile i kolejność pozostają bez zmian", self.protocol)
+
+    def test_scoped_resolution_and_prototype_are_not_full_readiness(self):
+        for text in ("12 otwartych pozycji", "Trzy zamknięto", "Osiem kwestii",
+                     "jedna kwestia pozyskania", "Pełne zamrożenie wejścia nadal",
+                     "nie rzeczywistą izolację", "nie jest\ntestem sieci sandboxa",
+                     "Alternatywę API opisano prywatnie, lecz jej nie przyjęto"):
             self.assertIn(text, self.protocol)
 
     def test_aggregate_checkpoint_is_not_single_assessor_input(self):

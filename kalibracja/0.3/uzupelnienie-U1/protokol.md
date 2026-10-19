@@ -1,14 +1,14 @@
 # U1 — badanie uzupełniające oficjalną metodologię 0.3
 
-**Wersja protokołu:** U1-1.2 — 2026-10-19; zatwierdzony limit trzech publikacji wydawcy
+**Wersja protokołu:** U1-1.3 — 2026-10-19; zatwierdzony korpus, dalsze warunki startu
 
 **Podstawa dokumentacji:** master `38babd2231c6ea2af786913c7c6040423b27a88d`
 
 **Metodologia:** oficjalne, zamrożone wydanie `v0.3.0`
 
 **Commit znacznika:** `853404df15f05ba769d2440644a14fd0c77ec2e3`
-**Status:** przygotowanie do przeglądu; nie rozpoczęto ocen. Wybrano sześć
-publikacji; korpus oczekuje na zatwierdzenie. Wejście nie jest dopuszczone do
+**Status:** przygotowanie po zatwierdzeniu korpusu; nie rozpoczęto ocen. Właściciel
+zatwierdził sześć publikacji 2026-10-19 o 16:36:25 +02:00. Wejście nie jest dopuszczone do
 ocen: pozostają udokumentowane braki biblioteki i niepotwierdzone warunki
 wykonawcze. Zatwierdzenie korpusu i start są osobnymi decyzjami właściciela.
 
@@ -34,6 +34,11 @@ przed wyborem. Pozostałe kryteria pozostają bez zmian. Zachowano wcześniejsze
 rejestry i historię decyzji. Wybrany zestaw obejmuje tylko dwóch rzeczywistych
 wydawców, po trzy publikacje; ogranicza to różnorodność redakcyjną i możliwość
 uogólniania obserwacji. Zgoda na limit nie jest zatwierdzeniem korpusu ani startu.
+
+Następnie właściciel osobno zatwierdził korpus oraz przyjął ograniczenie
+różnorodności wydawców. Zapis decyzji zachowano prywatnie wraz z identyfikatorem
+zatwierdzonego checkpointu. Wybór, profile i kolejność pozostają bez zmian.
+Zatwierdzenie korpusu nie jest zgodą na rozpoczęcie ocen.
 
 ## 2. Pytania badawcze
 
@@ -336,6 +341,18 @@ dopuszczonego do ocen. Istotne braki trzeba zamknąć, a następnie zweryfikowa�
 i zatwierdzić sumy całego wejścia przed serią. Nie zmienia to wybranego korpusu
 i nie uruchamia automatycznych podmian.
 
+Po zatwierdzeniu korpusu sprawdzono indywidualnie 12 otwartych pozycji.
+Trzy zamknięto w określonym zakresie przygotowania: dwie jako dokumentację
+odsyłaczy do narzędzi, jedną przez udokumentowanie podstawy prawnej niezależnej
+od niedostępnego komunikatu. Nie oznacza to odzyskania pełnych brakujących
+stron ani uzyskania praw do oprogramowania. Osiem kwestii podstaw wykorzystania
+pełnych dokumentów i jedna kwestia pozyskania urzędowego źródła pozostają
+otwarte. Wszystkie materiały centralne sześciu przypadków są zachowane.
+Pozyskano dodatkowe legalnie utrwalone dokumenty i ich ilustracje; poprzednie
+odpowiedzi i decyzje pozostają w historii. Pełne zamrożenie wejścia nadal
+jest zablokowane. Znaczenie luk ustalono według roli materiałów, bez oceny
+prawdziwości twierdzeń lub przewidywanego werdyktu.
+
 Zbiorczy checkpoint i manifest koordynatora obejmują wszystkie przypadki;
 nie przekazuje się ich oceniającym. Każda instancja otrzyma manifest i pliki
 wyłącznie własnego przypadku oraz identyczną część wspólną. Źródła wzajemnie
@@ -374,6 +391,17 @@ testy dostępu przyszłej instancji nie zostały wykonane. Istnienie narzędzia
 sandboxa ani poprawne manifesty nie potwierdzają egzekwowania granic.
 Zapisano oddzielnie warunki potwierdzone, niepotwierdzone i niewykonane testy.
 Brak odpowiedniego środowiska nie zatrzymał pozostałego przygotowania.
+
+Przygotowano konkretny wariant z osobnym interfejsem plików jednego przypadku
+i wspólnych źródeł, przy wyłączeniu wszystkich pozostałych narzędzi modelu.
+Osiem testów prototypu na wyłącznie syntetycznych danych zakończyło się
+powodzeniem. Sprawdzono granice tego interfejsu, nie rzeczywistą izolację
+przyszłej instancji. Test odmowy nieistniejącej funkcji sieciowej nie jest
+testem sieci sandboxa. Nie potwierdzono docelowego adaptera ChatGPT, snapshotu,
+świeżego kontekstu ani kompletnego odczytu mediów. Wymagane są testy wszystkich
+tych warstw w rzeczywistym środowisku. Nie obchodzono wcześniejszej odmowy
+systemowej. Alternatywę API opisano prywatnie, lecz jej nie przyjęto;
+zmiana powierzchni wykonawczej wymaga osobnej decyzji właściciela.
 
 ## 11. Dokumentowanie przyszłego przebiegu
 
