@@ -1,6 +1,6 @@
 # U1 — badanie uzupełniające oficjalną metodologię 0.3
 
-**Wersja protokołu:** U1-1.4 — 2026-10-19; jawna zmiana warunków wykonania, start zlecony
+**Wersja protokołu:** U1-1.5 — 2026-10-19; techniczna zmiana odbioru wyników
 
 **Podstawa dokumentacji:** master `38babd2231c6ea2af786913c7c6040423b27a88d`
 
@@ -40,6 +40,33 @@ Korpus zatwierdzono wcześniej 2026-10-19 o 16:36:25 +02:00.
 Poniższe historyczne opisy bramek U1-1.3 obowiązują tylko w zakresie
 niezmienionym przez powyższą decyzję. Zapisane wcześniejsze odmowy i braki
 pozostają faktami historycznymi, a nie nową odmową startu po zmianie warunków.
+
+**Uzupełnienie wykonawcze U1-1.5, zapisane przed ponowieniami:**
+Pierwszych 12 instancji zgłosiło zamknięcie i walidację, ale pamięć narzędziowa
+nie zachowała pełnych pakietów po zakończeniu tur. Potwierdzenia i sumy
+pozostały; nie zastępują kompletnych ocen. Koordynator wybrał niesprawdzony
+wcześniej sposób przekazania wyników. Próby odzyskania dokładnych bajtów
+nie powiodły się. Nie rekonstruuje się ocen z podsumowań.
+
+Na podstawie rozdziału 12 dopuszczono po jednym ponowieniu technicznym
+utraconej oceny w nowej instancji, bez wcześniejszych wyników. Zachowano
+pierwotne identyfikatory z osobnym oznaczeniem próby R1, rejestry i przyczynę.
+Nie jest to zwiększenie próby badawczej ani ponowienie z powodu werdyktu.
+
+W ponowieniach pełny pakiet trafia do pamięci procesu koordynatora przed
+zakończeniem tury oceniającego. Odbiór obejmuje sumy i niezmieniony oficjalny
+walidator. Transport przez potok nie utrwala wyników w zwykłych plikach.
+Sprawdzono zachowanie danych po zakończeniu tury osobnego agenta na danych
+syntetycznych. Wyniki zapisuje się do plików dopiero po zamknięciu wszystkich
+12 pakietów. To zastępuje opis odroczonego eksportu z pamięci oceniającego
+w U1-1.4; pozostałe warunki i metodologia pozostają bez zmian.
+
+Kontrola wykazała także dwie niezmanifestowane częściowe kopie mediów.
+Są dokładnymi początkami już dostarczonych pełnych plików; nie wnoszą nowych
+źródeł. Oryginalne sumy i bajty wejścia pozostawiono bez zmian. Nie deklaruje
+się doskonałej zgodności inwentarza katalogów. Oceniający korzystają wyłącznie
+z kanonicznych źródeł ujętych w zamrożonych manifestach; kopie częściowe
+pozostają dowodem technicznego odstępstwa, a nie materiałem oceny.
 
 ## 1. Cel i ograniczenia
 

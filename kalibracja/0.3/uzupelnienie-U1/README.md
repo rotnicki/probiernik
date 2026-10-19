@@ -19,10 +19,14 @@ nie jest techniczną blokadą dostępu do wspólnych plików. Dokładny snapshot
 | Element | Stan |
 | --- | --- |
 | Zatwierdzone publikacje | 6; identyfikatory, profile i kolejność bez zmian. |
-| Oceny zamknięte | 0 z 12; przygotowanie zamrożenia wejścia. |
+| Kompletne odebrane oceny | 0 z 12; pierwszych 12 zamknięć nie dało odzyskiwalnych pakietów. |
 | Porównania A/B | 0 z 6. |
-| Walidacja wyników | Jeszcze nie dotyczy. |
+| Walidacja wyników | Zgłoszona przez 12 instancji; koordynator nie może potwierdzić jej bez pełnych wyników. |
 | PR #11 | Roboczy; bez scalenia. |
+
+Utratę wyników i zmianę odbioru zapisano w U1-1.5. Przewidziane w protokole
+pojedyncze ponowienia techniczne użyją tego samego zamrożonego wejścia.
+Nie odtwarza się ocen z podsumowań; seria pozostaje niekompletna.
 
 Badanie nie zmienia metodologii ani skilla, nie rozpoczyna B2 i nie modyfikuje
 wcześniejszych wyników, wydań, materiałów 0.4 ani laboratoriów B2. Zmiany
@@ -33,6 +37,6 @@ nie przekazuje się oceniającym.
 Poprzedni status i warunki U1-1.3 zachowano w historii Git w commicie
 `f225f31d47f0261674e0cef377b9c51f497128d7`.
 
-- [Protokół U1-1.4 i jawna zmiana warunków](protokol.md).
+- [Protokół U1-1.5 i historia zmian warunków](protokol.md).
 - [Oficjalne wydanie v0.3.0](../../../wydania/v0.3.0.md).
 - [Standard 0.3](../../../metodologia/0.3/standard.md).

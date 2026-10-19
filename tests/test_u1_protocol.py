@@ -91,6 +91,13 @@ class U1ProtocolTests(unittest.TestCase):
                      "Wcześniejszych planów, odpowiedzi i decyzji nie nadpisuje się"):
             self.assertIn(text, self.protocol)
 
+    def test_technical_reception_failure_and_retry_are_explicit(self):
+        for text in ("U1-1.5", "nie zastępują kompletnych ocen", "po jednym ponowieniu technicznym",
+                     "próby R1", "nie utrwala wyników w zwykłych plikach", "Nie rekonstruuje się ocen",
+                     "niezmanifestowane częściowe kopie mediów"):
+            self.assertIn(text, self.protocol)
+        self.assertIn("seria pozostaje niekompletna", self.readme)
+
     def test_statutory_rights_are_checked_and_not_guessed(self):
         for text in ("Brak jawnej licencji nie oznacza zakazu wykorzystania",
                      "uprawnienie", "ustawowe", "aktualnych źródłach urzędowych",
