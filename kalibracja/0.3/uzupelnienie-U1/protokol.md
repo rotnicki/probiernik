@@ -660,6 +660,29 @@ błąd obu ocen, nieporównywalne awarie i pośrednie ujawnienie nazw.
 Każde ograniczenie zapisuje się; organizacyjna niewykonalność nie jest
 wynikiem o jakości metodologii.
 
+## Wnioski po zakończeniu badania — 20 października 2026 r.
+
+Po U1 wykonano przegląd sześciu porównań, obowiązujących zasad i źródłowych
+zapisów ocen dotyczących rozpoznanych problemów. Zapisano dziesięć decyzji
+z dowodami, proponowanymi poprawkami i sposobem sprawdzenia. Jest to analiza
+zakończonego badania, nie zmiana jego warunków ani dodatkowa ocena publikacji.
+
+Potwierdzono błąd programu oraz przypadek niewłaściwego zastosowania już
+zapisanej zasady: proponowana poprawka artykułu nie jest zabezpieczeniem,
+które czytelnik już ma. Przygotowano także propozycje objaśnień dotyczących
+wagi problemów, odbiorców, zakresu potwierdzania danych i dowodów historycznych.
+Nie uznano każdej rozbieżności za dowód wady metodologii.
+
+Kandydacka poprawka kodu przenosi istniejącą kontrolę minimum L do wykonywanej
+funkcji. Przeszła 72 testy oraz 42 kontrole zgodności z zachowanymi wynikami
+(36 kontroli ocen i sześć porównań). Oryginalne artefakty, oficjalny skill,
+metodologia i wydanie pozostają bez zmian. Nie ogłoszono 0.3.1 ani 0.4.
+
+Następny krok obejmuje rozpatrzenie przygotowanych zmian i rozdzielenie napraw
+technicznych od zmian znaczenia reguł. Rekomendacja z 19 października nie jest
+automatycznym poleceniem kolejnej serii. Nie zastępuje zapisanego planu B2
+ani nie zmienia jego materiałów. Nie rozpoczęto nowego badania.
+
 ## Dokumenty odniesienia
 
 - [Oficjalny standard 0.3](../../../metodologia/0.3/standard.md).
@@ -669,3 +692,4 @@ wynikiem o jakości metodologii.
 - [Informacje o wydaniu](../../../wydania/v0.3.0.md).
 - [Historyczne podsumowanie B1](../wyniki-B1.md) — tylko dla koordynatora.
 - [Status U1](README.md).
+

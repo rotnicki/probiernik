@@ -1,4 +1,66 @@
-# U1 — badanie zakończone z udokumentowanymi odstępstwami
+# U1 — co pokazało sprawdzenie Probiernika i co poprawiamy
+
+**Gdzie jesteśmy:** sprawdzenie obecnej wersji zostało zakończone. Teraz
+wykorzystujemy wyniki do przygotowania konkretnych poprawek. Opublikowaną
+wersją pozostaje 0.3.0. Nie wydano 0.3.1 ani 0.4 i nie rozpoczęto nowego badania.
+
+## Co Probiernik już potrafi
+
+Probiernik prowadzi AI przez przeczytanie publikacji, sprawdzenie twierdzeń
+i źródeł oraz przygotowanie uzasadnionego wniosku. W zakończonym badaniu
+powstało dwanaście pełnych ocen sześciu publikacji. Dwie osobne oceny każdej
+publikacji prowadziły do podobnego końcowego wniosku. To pokazuje
+powtarzalność w tych przypadkach; nie dowodzi, że wszystkie oceny są trafne.
+
+## Gdzie nadal są problemy
+
+- **Waga problemów:** AI różnie oceniały, czy poprawka zmienia ważną czynność
+  czytelnika. Zachowanie tego samego celu nie zawsze oznacza ten sam sposób
+  wykonania zadania.
+- **Odbiorcy artykułu:** podobny wynik ogólny ukrywał inne założenia o tym,
+  komu tekst ma pomóc. Początkujący czytelnik może również korzystać
+  z czytnika ekranu; obie te cechy mogą mieć znaczenie.
+- **Wymagane dowody:** potwierdzenie, że raport podaje liczbę, jest innym
+  ustaleniem niż potwierdzenie poprawności samego pomiaru.
+- **Ochrona przed błędem:** jeden agent potraktował dopiero proponowaną
+  poprawkę jak zabezpieczenie już dostępne czytelnikowi. Zasady wymagają
+  sprawdzenia tego, co rzeczywiście znajduje się w ocenianym artykule.
+- **Program i organizacja pracy:** wykryto pomijaną kontrolę wyniku.
+  Wcześniej zawiódł również sposób odbioru pierwszych ocen. To odrębne
+  problemy od jakości zasad oceny artykułów.
+
+## Co przygotowano po badaniu
+
+20 października przeanalizowano wyniki w odniesieniu do dokładnych zasad,
+których używali oceniający. Zapisano dziesięć decyzji i propozycji: dla każdej
+podano dowód, co wymaga poprawy, proponowaną zmianę i sposób jej sprawdzenia.
+Szczegóły odnoszące się do publikacji pozostają prywatne.
+
+Przygotowana poprawka programu uruchamia pomijaną kontrolę. Przeszła
+72 testy; sprawdzono też, że nadal przyjmuje dotychczasowe wyniki i porównania.
+Poprawka znajduje się w osobnej kopii do przeglądu. Nie podmieniono
+oficjalnego wydania ani wyników badania.
+
+Pozostałe propozycje dotyczą lepszych przykładów i objaśnień dla AI oraz
+rozstrzygnięcia dwóch granic: wykorzystania potrzeb użytkowników i zakresu
+odtworzenia dawnej publikacji. Te zmiany nie zostały jeszcze wdrożone.
+
+## Co robimy dalej i jak oznaczymy zmianę
+
+Najpierw rozpatrujemy przygotowane poprawki i określamy ich zakres. Naprawa
+programu lub objaśnienie zachowujące znaczenie zasad może wejść do 0.3.1.
+Zmiana znaczenia kryteriów lub progów jest propozycją do 0.4. Żaden z tych
+numerów nie oznacza obecnie nowego wydania.
+
+Plan porównania różnych AI pozostaje osobnym zaplanowanym badaniem. Przed
+jego rozpoczęciem trzeba określić dokładną wspólną wersję zasad i sprawdzić
+odzyskiwanie wyników po przerwaniu pracy. Samo zakończenie U1 nie uruchamia
+następnej serii.
+
+U1 jest nazwą badania wersji 0.3.0. Oznaczenia U1-1.3 i U1-1.6 dotyczą
+kolejnych opisów organizacji tego badania.
+
+## Dokładny zapis zakończonego badania
 
 **Stan: 2026-10-19. Ukończono 12 z 12 ocen i 6 z 6 porównań A/B.**
 Właściciel zlecił pełną serię 2026-10-19 o 18:05:22 +02:00.
@@ -53,10 +115,11 @@ rozbieżność kontraktu URI i HTTP(S), formalne korekty metryk, ograniczenia
 analizy mediów i niepełny dowód kolejności ustalenia jednego profilu odbiorcy.
 Pełny rejestr odstępstw i szczegółowe wyniki pozostają prywatne.
 
-Następny krok dla 0.4: naprawić i sprawdzić odbiór oraz walidatory w osobnej
-zmianie, następnie przygotować porównywalną serię sześciu przypadków po dwie
-oceny innej rodziny AI, z jawnymi ustawieniami i zamrożonym wejściem.
-To rekomendacja po U1; nie uruchomiono kolejnej serii.
+Rekomendację kolejnego kroku z 19 października skorygowano 20 października:
+najpierw trzeba przełożyć wyniki U1 na konkretne poprawki, oddzielić zmianę
+zasad od naprawy programu i określić ich wpływ na zapisany plan dalszych badań.
+To przegląd przygotowanych zmian; nie uruchomiono kolejnej serii.
+Nie podmieniono planu B2 nowym badaniem U1.
 
 Badanie nie zmienia metodologii ani skilla, nie rozpoczyna B2 i nie modyfikuje
 wcześniejszych wyników, wydań, materiałów 0.4 ani laboratoriów B2. Zmiany
@@ -72,3 +135,4 @@ Poprzedni status i warunki U1-1.3 zachowano w historii Git w commicie
 - [Protokół U1-1.6 i historia zmian warunków](protokol.md).
 - [Oficjalne wydanie v0.3.0](../../../wydania/v0.3.0.md).
 - [Standard 0.3](../../../metodologia/0.3/standard.md).
+

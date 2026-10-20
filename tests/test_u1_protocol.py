@@ -186,6 +186,16 @@ class U1ProtocolTests(unittest.TestCase):
                      "Nie dodaje się publikacji", "status niekompletny"):
             self.assertIn(text, self.protocol)
 
+    def test_post_study_decisions_preserve_release_and_study_boundaries(self):
+        for text in ("Nie wydano 0.3.1 ani 0.4", "Co Probiernik już potrafi",
+                     "Gdzie nadal są problemy", "Co przygotowano po badaniu",
+                     "zmiany nie zostały jeszcze wdrożone",
+                     "Nie podmieniono planu B2", "nie uruchamia"):
+            self.assertIn(text, self.readme)
+        for text in ("20 października 2026", "nie zmiana jego warunków",
+                     "72 testy", "42 kontrole", "Nie rozpoczęto nowego badania"):
+            self.assertIn(text, self.protocol)
+
     def test_public_documents_contain_no_corpus_urls(self):
         for path in (U1 / "README.md", U1 / "protokol.md"):
             content = path.read_text(encoding="utf-8")
@@ -206,3 +216,4 @@ class U1ProtocolTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
