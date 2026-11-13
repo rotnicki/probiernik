@@ -564,6 +564,8 @@ def validate_language_caps(profile: dict, scores: dict, path: str = "scores") ->
         fail(path, "po ustaleniu grup H i L muszą mieć oceny liczbowe")
     if scores["H"] != profile["lowest_significant_group_score"]:
         fail(f"{path}.H", "musi równać się minimum H istotnych grup objętych obietnicą")
+    if scores["L"] != profile["lowest_significant_group_l_score"]:
+        fail(f"{path}.L", "musi równać się minimum L istotnych grup objętych obietnicą")
     if profile["unexplained_core_terms_block_nonspecialists"] and scores["H"] > 2:
         fail(f"{path}.H", "blokujące niewyjaśnione terminy ograniczają H do 2")
     if profile["core_unrecoverable_without_expert"] and scores["H"] > 1:
@@ -1751,5 +1753,3 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-    if scores["L"] != profile["lowest_significant_group_l_score"]:
-        fail(f"{path}.L", "musi równać się minimum L istotnych grup objętych obietnicą")

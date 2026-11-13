@@ -516,6 +516,15 @@ class ValidatorTests(unittest.TestCase):
         with self.assertRaises(VALIDATOR.ValidationError):
             VALIDATOR.validate_result(result)
 
+    def test_result_l_must_equal_lowest_group_l_score(self) -> None:
+        # Regresja: kontrola minimum L znajdowała się wcześniej po wywołaniu main()
+        # i nigdy nie była wykonywana. Minimum L grup w danych testowych wynosi 3.
+        result = valid_result()
+        self.assertEqual(result["audience_profile"]["lowest_significant_group_l_score"], 3)
+        result["scores"]["L"] = 4
+        with self.assertRaisesRegex(VALIDATOR.ValidationError, r"^scores\.L: musi równać się minimum L"):
+            VALIDATOR.validate_result(result)
+
     def test_required_knowledge_needs_matching_trace(self) -> None:
         result = valid_result()
         result["publication_context"]["required_knowledge_details"] = []
